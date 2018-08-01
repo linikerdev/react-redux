@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
+import { Container } from 'reactstrap'
+
+import Menu from './template/menu'
+import Routes from './Routes'
+
 class App extends Component {
 
   render() {
     return (
-      <div>
-      </div>
-    );
+      <Container>
+        <Menu />
+        <Routes />
+      </Container>
+    )
   }
 }
 
