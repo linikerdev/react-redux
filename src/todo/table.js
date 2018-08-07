@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table } from 'reactstrap'
+import { Table, Button } from 'reactstrap'
 
 export default props => {
 
@@ -10,6 +10,7 @@ export default props => {
                 <tr key={e._id}>
                     <th scope="row">{e._id}</th>
                     <td>{e.description}</td>
+                    <td><Button size="sm" onClick={() => props.handleRemove(e)}>Excluir</Button></td>
                 </tr>
             )
         })
@@ -21,6 +22,7 @@ export default props => {
                 <tr>
                     <th>id</th>
                     <th>Descrição</th>
+                    <th>Excluir</th>
                 </tr>
             </thead>
             <tbody>

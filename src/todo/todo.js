@@ -28,20 +28,25 @@ export default class Todo extends Component {
         this.handleAdd = this.handleAdd.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.refresh = this.refresh.bind(this)
+        this.clear = this.clear.bind(this)
+        this.message = this.message.bind(this)
+        this.handleRemove = this.handleRemove.bind(this)
+        this.handleSearch = this.handleSearch.bind(this)
 
         this.refresh()
     }
 
 
-    async refresh () {
-        const res = await axios.get(`${URL}?sort=createdAt`)
+    async refresh(description = '') {
+        const search = description ? `&description__regex=/${description}/` : ''
+        let res = await axios.get(`${URL}?sort=createdAt${search}`)
         this.setState({
             ...this.state,
             list: res.data
         })
     }
 
-    onDismiss () {
+    onDismiss() {
         this.setState({
             ...this.state,
             message: {
@@ -49,42 +54,59 @@ export default class Todo extends Component {
             }
         })
     }
+    handleSearch(e) {
+        this.refresh(this.state.description)
+    }
 
-    handleChange (e) {
+    handleChange(e) {
         this.setState({
             ...this.state,
             description: e.target.value
         })
     }
 
-    async handleAdd () {
+    clear() {
+        this.setState({
+            ...this.state,
+            description: ''
+        })
+    }
+
+    message(tipo, text) {
+        this.setState({
+            ...this.state,
+            message: {
+                tipo,
+                text,
+                visible: true
+            }
+        })
+    }
+
+    handleRemove(item) {
+        axios.delete(`${URL}/${item._id}`)
+            .then((r) => {
+                this.message('success', 'Excluido com sucesso')
+                this.refresh()
+
+            })
+            .catch(err => this.message('danger', 'nao foi possivel excluir'))
+    }
+
+    async handleAdd() {
         const description = this.state.description
 
         try {
             await axios.post(URL, { description })
-
-            this.setState({
-                ...this.state,
-                message: {
-                    tipo: 'success',
-                    text: `${this.state.description} Cadastrado com sucesso`,
-                    visible: true
-                }
-            })
+            this.message('success', 'descrição cadastrado com sucesso')
             this.refresh()
+            this.clear()
         } catch (error) {
-            this.setState({
-                ...this.state,
-                message: {
-                    tipo: 'danger',
-                    text: `Erro ao cadastrar tarefa`,
-                    visible: true
-                }
-            })
+            this.message('danger', 'Erro ao cadastrar tarefa')
         }
     }
 
-    render () {
+    render() {
         return (
             <div>
                 <h1>Todo</h1>
@@ -96,9 +118,10 @@ export default class Todo extends Component {
                     handleChange={this.handleChange}
                     description={this.state.description}
                     message={this.state.message}
+                    handleSearch={this.handleSearch}
                 />
 
-                <Table list={this.state.list} />
+                <Table list={this.state.list} handleRemove={this.handleRemove} />
             </div>
         )
     }
