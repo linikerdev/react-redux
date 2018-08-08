@@ -3,7 +3,9 @@ import { Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
 
-export default props => (
+import { connect } from 'react-redux'
+
+const TodoForm = props => (
     <Form>
         <Row>
             <Col xs='10' md='10'>
@@ -15,8 +17,8 @@ export default props => (
             <Col md='1' xs='2'>
                 <FormGroup>
                     <Label for=''>Buscar</Label>
-                    <Button color='info' className='text-center' 
-                    onClick={props.handleSearch}>
+                    <Button color='info' className='text-center'
+                        onClick={props.handleSearch}>
                         <FontAwesomeIcon icon={faSearch} />
                     </Button>
                 </FormGroup>
@@ -24,13 +26,20 @@ export default props => (
             <Col md='1' xs='2'>
                 <FormGroup>
                     <Label for=''>Adicionar</Label>
-                    <Button color='danger' className='text-center' 
-                    onClick={props.handleAdd}>
+                    <Button color='danger' className='text-center'
+                        onClick={props.handleAdd}>
                         <FontAwesomeIcon icon={faPlus} />
                     </Button>
                 </FormGroup>
             </Col>
-            
+
         </Row>
     </Form>
 )
+
+
+const mapStateToProps = state => ({
+    description: state.todo.description
+})
+
+export default connect(mapStateToProps)(TodoForm)

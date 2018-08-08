@@ -1,7 +1,9 @@
 import React from 'react'
 import { Table, Button } from 'reactstrap'
+import { connect } from 'react-redux'
 
-export default props => {
+
+const TodoList = props => {
 
     const moutTh = () => {
         const list = props.list || []
@@ -30,5 +32,10 @@ export default props => {
             </tbody>
         </Table>
     )
-
 }
+
+const mapStateToProps = state => ({
+    list: state.todo.list
+})
+
+export default connect(mapStateToProps)(TodoList)

@@ -116,12 +116,13 @@ export default class Todo extends Component {
                 <Form
                     handleAdd={this.handleAdd}
                     handleChange={this.handleChange}
-                    description={this.state.description}
                     message={this.state.message}
                     handleSearch={this.handleSearch}
                 />
 
-                <Table list={this.state.list} handleRemove={this.handleRemove} />
+                <Table
+                    handleRemove={this.handleRemove}
+                />
             </div>
         )
     }
