@@ -9,8 +9,8 @@ const TodoList = props => {
         const list = props.list || []
         return list.map((e) => {
             return (
-                <tr key={e._id}>
-                    <th scope="row">{e._id}</th>
+                <tr key={e.id}>
+                    <th scope="row">{e.id}</th>
                     <td>{e.description}</td>
                     <td><Button size="sm" onClick={() => props.handleRemove(e)}>Excluir</Button></td>
                 </tr>

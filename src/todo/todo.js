@@ -33,8 +33,7 @@ export default class Todo extends Component {
         this.handleRemove = this.handleRemove.bind(this)
         this.handleSearch = this.handleSearch.bind(this)
 
-        this.refresh()
-    }
+        }
 
 
     async refresh(description = '') {
@@ -115,7 +114,7 @@ export default class Todo extends Component {
                 </Alert>
                 <Form
                     handleAdd={this.handleAdd}
-                    handleChange={this.handleChange}
+                    handleChange={this.changeDescription}
                     message={this.state.message}
                     handleSearch={this.handleSearch}
                 />
