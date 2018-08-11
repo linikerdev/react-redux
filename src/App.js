@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Container } from 'reactstrap'
 
 import Menu from './template/menu'
 import Routes from './Routes'
 
 class App extends Component {
-
-  render() {
+  render () {
     return (
       <Container>
         <Menu />
@@ -16,4 +15,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
