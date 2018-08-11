@@ -8,12 +8,17 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 
 import reducers from './reducers'
-import promise from 'redux-promise'
 
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 
-const store = applyMiddleware(promise)(createStore)(
+import promise from 'redux-promise'
+import multi from 'redux-multi'
+
+const store = applyMiddleware(
+  multi,
+  promise
+)(createStore)(
   reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )

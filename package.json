@@ -18,6 +18,7 @@
     "react-scripts": "1.1.4",
     "reactstrap": "^6.3.1",
     "redux": "^4.0.0",
+    "redux-multi": "^0.1.12",
     "redux-promise": "^0.6.0",
     "standard": "^11.0.1"
   },
@@ -26,5 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.5"
   }
 }

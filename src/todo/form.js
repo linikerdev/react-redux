@@ -13,9 +13,11 @@ class TodoForm extends Component {
     super(props)
   }
 
-  componentWillMount () {
+  componentWillMount(){
     this.props.searchForm()
   }
+
+  
   render () {
     const { description, add } = this.props
 
@@ -28,7 +30,9 @@ class TodoForm extends Component {
               <Input
                 onChange={this.props.changeDescription}
                 value={description} type='text'
-                placeholder='with a placeholder' required />
+                required={true}
+                min='2'
+                placeholder='with a placeholder' />
             </FormGroup>
           </Col>
           <Col md='1' xs='2'>

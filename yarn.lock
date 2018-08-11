@@ -6015,6 +6015,14 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
+redux-devtools-extension@^2.13.5:
+  version "2.13.5"
+  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.5.tgz#3ff34f7227acfeef3964194f5f7fc2765e5c5a39"
+
+redux-multi@^0.1.12:
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/redux-multi/-/redux-multi-0.1.12.tgz#28e1fe5e49672cbc5bd8a07f0b2aeaf0ef8355c2"
+
 redux-promise@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/redux-promise/-/redux-promise-0.6.0.tgz#c64723b5213bb5603c11b74302883b682e06b319"
