@@ -1,12 +1,8 @@
 {
   "todos": [
     {
-      "description": "cortar cabelo",
+      "description": "liniker",
       "id": 1
-    },
-    {
-      "description": "ir na igreja",
-      "id": 2
     }
   ]
 }

@@ -30,8 +30,8 @@ class TodoForm extends Component {
               <Input
                 onChange={this.props.changeDescription}
                 value={description} type='text'
-                required={true}
-                min='2'
+                min={2}
+                required
                 placeholder='with a placeholder' />
             </FormGroup>
           </Col>

@@ -14,8 +14,10 @@ import registerServiceWorker from './registerServiceWorker'
 
 import promise from 'redux-promise'
 import multi from 'redux-multi'
+import thunk from 'redux-thunk'
 
 const store = applyMiddleware(
+  thunk,
   multi,
   promise
 )(createStore)(

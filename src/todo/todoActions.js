@@ -16,9 +16,19 @@ export const searchForm = () => {
 }
 
 export const add = (description) => {
-  const request = axios.post(URL, { description })
-  return[
-    { type: 'TODO_ADDED', payload: request },
-    searchForm()
-  ]
+  return dispatch => {
+    axios.post(URL, { description })
+    .then(res =>   dispatch({ type: 'TODO_CLEAR', payload: res }))
+    .then(res =>  dispatch(searchForm()))
+    
+  }
+}
+
+export const remove = (todo) => {
+  console.log(todo)
+  return dispatch => {
+    axios.delete(`${URL}/${todo.id}`)
+    .then(res =>  dispatch(searchForm()))
+    
+  }
 }

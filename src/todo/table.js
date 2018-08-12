@@ -2,6 +2,10 @@ import React from 'react'
 import { Table, Button } from 'reactstrap'
 import { connect } from 'react-redux'
 
+import { bindActionCreators } from 'redux'
+import { remove, searchForm } from './todoActions'
+
+
 const TodoList = props => {
   const moutTh = () => {
     const list = props.list || []
@@ -10,7 +14,7 @@ const TodoList = props => {
         <tr key={e.id}>
           <th scope='row'>{e.id}</th>
           <td>{e.description}</td>
-          <td><Button size='sm' onClick={() => props.handleRemove(e)}>Excluir</Button></td>
+          <td><Button size='sm' onClick={() => props.remove(e)}>Excluir</Button></td>
         </tr>
       )
     })
@@ -36,4 +40,11 @@ const mapStateToProps = state => ({
   list: state.todo.list
 })
 
-export default connect(mapStateToProps)(TodoList)
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({
+    remove,
+    searchForm
+  }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
+
