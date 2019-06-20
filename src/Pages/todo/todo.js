@@ -22,12 +22,12 @@ export default class Todo extends Component {
     return (
       <div>
         <h1>Todo</h1>
-        <Form
+        {/* <Form
           handleChange={this.changeDescription}
           handleSearch={this.handleSearch}
-        />
+        /> */}
 
-        <Table />
+        {/* <Table /> */}
       </div>
     )
   }

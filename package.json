@@ -21,6 +21,7 @@
     "redux-multi": "^0.1.12",
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
+    "reduxsauce": "^1.1.0",
     "standard": "^11.0.1"
   },
   "scripts": {
@@ -30,6 +31,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "reactotron-react-js": "^3.3.2",
     "redux-devtools-extension": "^2.13.5"
   }
 }
